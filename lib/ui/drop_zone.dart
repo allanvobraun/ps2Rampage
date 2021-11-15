@@ -1,5 +1,7 @@
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ps2_rampage/models/file_model.dart';
 import 'package:ps2_rampage/ui/widgets/gradient_button.dart';
 
 class Dropzone extends StatefulWidget {
@@ -10,23 +12,21 @@ class Dropzone extends StatefulWidget {
 }
 
 class _DropzoneState extends State<Dropzone> {
-  Uri? _filePath;
-
   bool _dragging = false;
 
-  String? get _filename => _filePath?.path.split("/").last;
-
-  Widget get _centerText => Center(
-        child: Text(_filename ?? 'Arraste o arquivo bin aqui'),
+  Widget get _centerText => Consumer<FileModel>(
+        builder: (context, fileModel, child) => Center(
+          child: Text(fileModel.filename ?? 'Arraste o arquivo bin aqui'),
+        ),
       );
 
   @override
   Widget build(BuildContext context) {
+    var fileModel = context.read<FileModel>();
+
     return DropTarget(
       onDragDone: (detail) {
-        setState(() {
-          _filePath = detail.urls[0];
-        });
+        fileModel.changeUri(detail.urls[0]);
       },
       onDragEntered: (detail) {
         setState(() {
@@ -39,7 +39,7 @@ class _DropzoneState extends State<Dropzone> {
         });
       },
       child: AnimatedOpacity(
-        opacity: _dragging ? .8: 1,
+        opacity: _dragging ? .8 : 1,
         duration: const Duration(microseconds: 500),
         child: Container(
           height: 200,

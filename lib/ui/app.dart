@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ps2_rampage/models/file_model.dart';
 import 'home_page.dart';
 
 class App extends StatelessWidget {
@@ -30,7 +32,10 @@ class App extends StatelessWidget {
             .fromSwatch(primarySwatch: primaryColor)
             .copyWith(secondary: Colors.redAccent)
       ),
-      home: const Home(title: 'Ps2 rampage'),
+      home: ChangeNotifierProvider(
+        create: (context) => FileModel(),
+        child: const Home(title: 'Ps2 rampage'),
+      ),
     );
   }
 }
