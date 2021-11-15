@@ -50,21 +50,10 @@ class _DropzoneState extends State<Dropzone> {
             children: [
               _centerText,
               GradientButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(right: 2),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text('Procurar arquivos')
-                    ],
-                  ),
-                  onClick: () {})
+                child: const Text('Procurar arquivos'),
+                onClick: () {},
+                icon: Icons.search,
+              )
             ]
                 .map(
                   (e) => Padding(
