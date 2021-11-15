@@ -22,20 +22,24 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Dropzone(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HoverButton(
-                    child: const Text('Cancelar'),
-                    color: Colors.red,
-                    onClick: () {}
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: SizedBox(
+                width: 700,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    HoverButton(
+                        child: const Text('Cancelar'),
+                        color: Colors.red,
+                        onClick: () {}),
+                    HoverButton(
+                        child: const Text('Converter'),
+                        color: Colors.green,
+                        onClick: () {}),
+                  ],
                 ),
-                HoverButton(
-                    child: const Text('Converter'),
-                    color: Colors.green,
-                    onClick: () {}
-                ),
-              ],
+              ),
             )
           ],
         ),

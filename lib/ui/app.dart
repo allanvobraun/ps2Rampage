@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ps2_rampage/models/file_model.dart';
+import 'package:window_manager/window_manager.dart';
 import 'home_page.dart';
 
 class App extends StatelessWidget {
@@ -24,6 +25,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WindowManager.instance.setMinimumSize(const Size(800, 600));
+    WindowManager.instance.setMaximumSize(const Size(800, 600));
     return MaterialApp(
       title: 'Ps2 Rampage',
       theme: ThemeData(
@@ -34,7 +37,7 @@ class App extends StatelessWidget {
       ),
       home: ChangeNotifierProvider(
         create: (context) => FileModel(),
-        child: const Home(title: 'Ps2 rampage'),
+        child: const Home(title: 'Bin2Iso Converter'),
       ),
     );
   }

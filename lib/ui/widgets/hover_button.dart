@@ -27,7 +27,6 @@ class _HoverState extends State<HoverButton> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
