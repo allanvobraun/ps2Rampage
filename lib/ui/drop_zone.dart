@@ -22,7 +22,7 @@ class _DropzoneState extends State<Dropzone> {
 
   @override
   Widget build(BuildContext context) {
-    var fileModel = context.read<FileModel>();
+    final fileModel = context.read<FileModel>();
 
     return DropTarget(
       onDragDone: (detail) {
@@ -51,7 +51,7 @@ class _DropzoneState extends State<Dropzone> {
               _centerText,
               GradientButton(
                 child: const Text('Procurar arquivos'),
-                onClick: () {},
+                onClick: fileModel.isEmpty ? () {} : null,
                 icon: Icons.search,
               )
             ]

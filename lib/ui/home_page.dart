@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ps2_rampage/models/file_model.dart';
 import 'package:ps2_rampage/ui/drop_zone.dart';
 import 'package:ps2_rampage/ui/widgets/hover_button.dart';
 
@@ -13,6 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final fileModel = context.read<FileModel>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -32,11 +36,11 @@ class _HomeState extends State<Home> {
                     HoverButton(
                         child: const Text('Cancelar'),
                         color: Colors.red,
-                        onClick: () {}),
+                        onClick: !fileModel.isEmpty ? () {} : null),
                     HoverButton(
                         child: const Text('Converter'),
                         color: Colors.green,
-                        onClick: () {}),
+                        onClick: !fileModel.isEmpty ? () {} : null),
                   ],
                 ),
               ),

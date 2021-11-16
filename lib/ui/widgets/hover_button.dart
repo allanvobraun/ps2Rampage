@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HoverButton extends StatefulWidget {
-  final VoidCallback onClick;
+  final VoidCallback? onClick;
   final Widget child;
   final MaterialColor color;
 
@@ -23,9 +23,11 @@ class _HoverState extends State<HoverButton> {
     return OutlinedButton.styleFrom(
         primary: _hovered ? Colors.white : widget.color,
         side: BorderSide(color: widget.color),
-        backgroundColor: _hovered ? widget.color : null
+        backgroundColor: _hovered && !_disabled ? widget.color : null
     );
   }
+
+  bool get _disabled => widget.onClick == null;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
-  final GestureTapCallback onClick;
+  final GestureTapCallback? onClick;
   final Widget child;
   final IconData? icon;
 
@@ -44,8 +44,7 @@ class GradientButton extends StatelessWidget {
                   style: btnStyle,
                   onPressed: onClick,
                   icon: Icon(icon, color: Colors.white),
-                  label: child
-          ),
+                  label: child),
         ],
       ),
     );
